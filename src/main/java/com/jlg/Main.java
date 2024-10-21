@@ -9,13 +9,13 @@ public class Main {
         int[] arr = { 4, 2, 5, 3, 2, 1, 3, 2, 2, 1, 0, 9, 9, 3 };
         int target = 12;
 
-        int[] arr2 = {};
-        int target2 = 0;
+        int[] arr2 = {3, 2, 4};
+        int target2 = 6;
 
         int[] arr3 = {1};
         int target3 = '1';
 
-        String result1 = challengeSolution1(arr3, target3);
+        String result1 = challengeSolution1(arr2, target2);
         String result2 = challengeSolution2(arr3, target3);
         String result3 = challengeSolution3(arr3, target3);
 
@@ -27,7 +27,7 @@ public class Main {
     public static String challengeSolution1(int[] nums, int target) {
         StringBuilder result = new StringBuilder();
         for(int i = 0; i < nums.length; i++){
-            for(int j = 1; j < nums.length - 1; j++){
+            for(int j = i + 1; j < nums.length; j++){
               if(nums[i] + nums[j] == target){
                   return "First index " + i + " Second index " + j;
               }
@@ -57,7 +57,7 @@ public class Main {
 
 
     // SOLUTION 3: The HashMap solution. I used HashMap for another challenge before
-    // and I found it very interesting and clever
+    // and I found them very interesting data structures
 
     public static String challengeSolution3(int[] nums, int target){
         HashMap<Integer, Integer> numMap = new HashMap<>();
@@ -67,7 +67,7 @@ public class Main {
             if (numMap.containsKey(temp)) {
                 return "First index " + numMap.get(temp) + " Second index " + i;
             }
-            numMap.putIfAbsent(nums[i], i);
+            numMap.put(nums[i], i);
         }
         return "Nothing is found!";
     }
